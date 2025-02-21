@@ -22,10 +22,11 @@ if(isset($_POST['form_submit'])){
     $mail->Port       = 465;
     $mail->setFrom($form_email, $form_name);
     $mail->addAddress('marvinmoresca@gmail.com', '');
+    $mail->addReplyTo($form_email, $form_name);
     $mail->isHTML(true);
     $mail->Subject = $form_subject;
-    $mail->Body    = '';
-    $mail->AltBody = '';
+    $mail->Body    = $form_message;
+    $mail->AltBody = $form_message;
     $mail->send();
     $_SESSION['icon'] = "success";
     $_SESSION['message'] = "Your message was sent.";
